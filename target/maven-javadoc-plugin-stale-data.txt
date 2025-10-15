@@ -1,0 +1,59 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+@argfile
+--no-fonts
+-classpath
+'C:/Users/User/.m2/repository/org/netbeans/external/AbsoluteLayout/RELEASE90/AbsoluteLayout-RELEASE90.jar;C:/Users/User/.m2/repository/io/github/AnLaVN/AL-Library_VN/6.70.10.2/AL-Library_VN-6.70.10.2.jar'
+-encoding
+'UTF-8'
+-protected
+--release
+25
+-sourcepath
+'C:/Users/User/Documents/NetBeansProjects/SIGB/SIGB-TrabalhoSemestral/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/User/Documents/NetBeansProjects/SIGB/SIGB-TrabalhoSemestral/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'SIGB-TrabalhoSemestral 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'SIGB-TrabalhoSemestral 1.0-SNAPSHOT API'
+controller
+DAO
+model
+poo.sigb.trabalhosemestral
+view
+'C:/Users/User/Documents/NetBeansProjects/SIGB/SIGB-TrabalhoSemestral/src/main/java/Teste1GitHub.java'
+C:\Users\User\.m2\repository\org\netbeans\external\AbsoluteLayout\RELEASE90\AbsoluteLayout-RELEASE90.jar = 1759540657528
+C:\Users\User\.m2\repository\io\github\AnLaVN\AL-Library_VN\6.70.10.2\AL-Library_VN-6.70.10.2.jar = 1759541439607
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\src\main\java\Teste1GitHub.java = 1759522404293
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\src\main\java = 1759964375391
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\allclasses-index.html = 1760494920368
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\allpackages-index.html = 1760494920382
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\element-list = 1760494919507
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\help-doc.html = 1760494920728
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\index-all.html = 1760494920710
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\index.html = 1760494920196
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\member-search-index.js = 1760494920462
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\module-search-index.js = 1760494920385
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\overview-summary.html = 1760494920720
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\overview-tree.html = 1760494920179
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\package-search-index.js = 1760494920434
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\package-summary.html = 1760494919519
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\package-tree.html = 1760494919568
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\package-use.html = 1760494920074
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\search.html = 1760494920715
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\serialized-form.html = 1760494919846
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\tag-search-index.js = 1760494920511
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\Teste1GitHub.html = 1760494919418
+C:\Users\User\Documents\NetBeansProjects\SIGB\SIGB-TrabalhoSemestral\target\reports\apidocs\type-search-index.js = 1760494920446
