@@ -9,6 +9,11 @@ import DAO.BibliotecarioDAO;
 import DAO.AtividadeDAO;
 import model.Atividade;
 
+/**
+ * Controlador responsável pela autenticação de utilizadores no sistema.
+ * Gerencia login de gestores, bibliotecários e administrador.
+ * Fornece métodos para autenticação e alteração de senhas.
+ */
 public class SistemaLogin {
     private GestorDAO gestorDAO;
     private BibliotecarioDAO bibliotecarioDAO;
@@ -16,6 +21,10 @@ public class SistemaLogin {
     private String usuarioLogado;
     private String funcaoUsuario;
 
+    /**
+     * Construtor que inicializa os DAOs necessários para autenticação.
+     * Prepara sistema para validar credenciais de gestores e bibliotecários.
+     */
     public SistemaLogin() {
         this.gestorDAO = new GestorDAO();
         this.bibliotecarioDAO = new BibliotecarioDAO();

@@ -9,6 +9,11 @@ import DAO.GestorDAO;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
+/**
+ * Tela para alteração de senha dos utilizadores do sistema.
+ * Permite que gestores e bibliotecários alterem suas senhas mediante validação.
+ * Requer ID, senha atual e nova senha para autenticação.
+ */
 public class AlterarSenha extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AlterarSenha.class.getName());
@@ -16,6 +21,10 @@ public class AlterarSenha extends javax.swing.JFrame {
     private BibliotecarioDAO bibliotecarioDAO = new BibliotecarioDAO();
     private GestorDAO gestorDAO = new GestorDAO();
     
+    /**
+     * Construtor que inicializa a interface de alteração de senha.
+     * Configura componentes e define comportamento da janela.
+     */
     public AlterarSenha() {
         initComponents();
         setLocationRelativeTo(null);
@@ -288,7 +297,11 @@ public class AlterarSenha extends javax.swing.JFrame {
         // TODO add your handling code here:
          jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }//GEN-LAST:event_jButton1MouseEntered
-
+   /**
+     * Processa a solicitação de alteração de senha.
+     * Valida credenciais, verifica regras de senha e atualiza no sistema.
+     * Suporta alteração para gestores e bibliotecários.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
          try {
@@ -349,7 +362,10 @@ public class AlterarSenha extends javax.swing.JFrame {
     }
 
     }//GEN-LAST:event_jButton1ActionPerformed
-
+          /**
+     * Retorna à tela de login quando o utilizador clica em "Fazer Login".
+     * Fecha a tela atual e abre a tela de autenticação.
+     */
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         new Login().setVisible(true);
         this.dispose();

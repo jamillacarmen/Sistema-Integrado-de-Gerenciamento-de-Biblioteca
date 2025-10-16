@@ -8,10 +8,20 @@ import java.awt.print.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * Janela para exibição detalhada de uma atividade específica do sistema.
+ * Mostra informações completas sobre ações realizadas por utilizadores.
+ * Permite visualizar e imprimir relatórios individuais de atividades.
+ */
+
 public class DetalhesAtividade extends javax.swing.JFrame {
 
     private Atividade atividade;
     
+    /**
+     * Construtor que inicializa a janela de detalhes da atividade.
+     * @param atividade a atividade cujos detalhes serão exibidos
+     */
     public DetalhesAtividade(Atividade atividade) {
         this.atividade = atividade;
         initComponents();
@@ -19,6 +29,10 @@ public class DetalhesAtividade extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
     }
 
+    /**
+     * Inicializa os componentes da interface gráfica.
+     * Configura layout, painéis e elementos visuais para exibição dos detalhes.
+     */
     private void initComponents() {
         setTitle("Detalhes da Atividade");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -130,6 +144,10 @@ public class DetalhesAtividade extends javax.swing.JFrame {
         }
     }
     
+    /**
+     * Gera o conteúdo formatado do relatório da atividade.
+     * @return string contendo o relatório completo formatado
+     */
     private String gerarConteudoRelatorio() {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String dataImpressao = sdf.format(new Date());

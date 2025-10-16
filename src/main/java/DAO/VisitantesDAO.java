@@ -10,15 +10,29 @@ import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Data Access Object para gerenciar dados dos visitantes da biblioteca.
+ * Responsável por operações CRUD.
+ */
+
 public class VisitantesDAO extends BaseDAO {
+    
     private static final String ARQUIVO = "visitantes.dat";
     private List<Visitantes> visitantes;
 
     public VisitantesDAO() {
         visitantes = carregarDados(ARQUIVO);
     }
+    
+    
+    /**
+     * Registra um novo visitante no sistema.
+     * @param visitante o visitante a ser registrado
+     */
+    
 
     public void registrarVisitante(Visitantes visitante) {
+       
         visitantes.add(visitante);
         salvarDados(ARQUIVO, visitantes);
     }
@@ -26,6 +40,11 @@ public class VisitantesDAO extends BaseDAO {
     public List<Visitantes> listarVisitantes() {
         return new ArrayList<>(visitantes);
     }
+    
+      /**
+     * Conta quantos visitantes foram registrados hoje.
+     * @return número de visitantes do dia atual
+     */
 
     public int contarVisitantesHoje() {
     LocalDate hoje = LocalDate.now(); // sempre a data de hoje
@@ -38,6 +57,12 @@ public class VisitantesDAO extends BaseDAO {
     return count;
 }
 
+      /**
+     * Busca visitantes por nome (busca parcial case-insensitive).
+     * @param nome o nome ou parte do nome a buscar
+     * @return lista de visitantes encontrados
+     */
+    
     public List<Visitantes> buscarPorNome(String nome) {
         List<Visitantes> resultado = new ArrayList<>();
         for (Visitantes visitante : visitantes) {

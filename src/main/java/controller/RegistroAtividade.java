@@ -4,6 +4,11 @@ package controller;
 import model.Atividade;
 import DAO.AtividadeDAO;
 
+/**
+ * Controlador responsável pelo registro centralizado de atividades do sistema.
+ * Fornece métodos estáticos para registrar diferentes tipos de ações realizadas por utilizadores.
+ * Mantém log de todas as operações significativas para auditoria e monitoramento.
+ */
 public class RegistroAtividade {
     private static AtividadeDAO atividadeDAO = new AtividadeDAO();
     

@@ -26,7 +26,11 @@ import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-
+/**
+ * Janela principal do administrador do sistema.
+ * Gerencia utilizadores (gestores e bibliotecários) e monitora atividades do sistema.
+ * Permite registrar, visualizar e remover utilizadores, além de acompanhar logs de atividades.
+ */
 
 public class MenuAdm extends javax.swing.JFrame {
     
@@ -43,11 +47,18 @@ public class MenuAdm extends javax.swing.JFrame {
     /**
      * Creates new form MenuAdm
      */
+    
+    /**
+     * Construtor que inicializa a interface do administrador.
+     * Configura painéis, carrega dados iniciais e configura componentes.
+     */
     public MenuAdm() {
         initComponents();
         
         setLocationRelativeTo(null);
     setResizable(false);
+    
+    this.setTitle("Administrador - JAMILA SIGB");
         carregarTabelaUtilizadores();
         configurarComboBoxCargo();
         configurarPainelAtividades();
@@ -1333,6 +1344,10 @@ private void carregarTabelaAtividades() {
     jComboBox1.addItem("Bibliotecario");
 }
     
+    /**
+     * Carrega a tabela de utilizadores com dados de gestores e bibliotecários.
+     * Combina dados de ambas as entidades em uma única visualização.
+     */
     private void carregarTabelaUtilizadores() {
     DefaultTableModel model = (DefaultTableModel) UtilizadorTable.getModel();
     model.setRowCount(0); // Limpa a tabela

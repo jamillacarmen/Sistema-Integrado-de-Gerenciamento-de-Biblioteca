@@ -22,11 +22,20 @@ import controller.RegistroAtividade;
 import model.Livros;
 import model.Emprestimos;
 import java.util.List;
+import controller.SistemaLogin;
 
     
-
+/**
+ * Janela principal do gestor do sistema de biblioteca.
+ * Permite gerenciar livros, visualizar atividades e configurar taxas.
+ */
 
 public class MenuGestor extends javax.swing.JFrame {
+    
+    /**
+     * Construtor que inicializa a interface do gestor.
+     * Configura painéis, carrega dados iniciais e define a taxa de empréstimo.
+     */
     
     // VARIaVEIS 
   private LivrosDAO livroDAO;
@@ -34,7 +43,7 @@ public class MenuGestor extends javax.swing.JFrame {
   private ConfiguracaoDAO configDAO;
     private double taxaEmprestimo;
     private String nomeUsuario = "Gestor";
-
+    
 public void setNomeUsuario(String nome) {
     this.nomeUsuario = nome;
 }
@@ -46,10 +55,13 @@ public void setNomeUsuario(String nome) {
      */
     public MenuGestor() {
         initComponents();
-        
+       // puxa o nome do usuario logado a partir do login 
+        String nomeUsuario = Login.usuarioLogadoGlobal;
+    this.setTitle("Gestor/a - " + nomeUsuario);
+    
         setLocationRelativeTo(null);
     setResizable(false);
-        
+     
        this.livroDAO = new LivrosDAO();
 this.emprestimoDAO = new EmprestimosDAO();
 this.configDAO = new ConfiguracaoDAO();

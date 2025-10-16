@@ -14,8 +14,15 @@ import view.MenuGestor;
 import view.MenuFuncionario2;
 import view.MenuAdm;
 
+/**
+ * Tela de autenticação do sistema.
+ * Responsável por validar credenciais e redirecionar para o menu apropriado.
+ */
 public class Login extends javax.swing.JFrame {
     private SistemaLogin sistemaLogin = new SistemaLogin();
+    
+    public static String usuarioLogadoGlobal;
+    public static String funcaoUsuarioGlobal;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
 
@@ -274,7 +281,10 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }//GEN-LAST:event_jButton1MouseEntered
-
+  /**
+     * Processa o login do usuário.
+     * Valida credenciais e redireciona para o menu correspondente à função.
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     
@@ -292,6 +302,9 @@ public class Login extends javax.swing.JFrame {
         
         // Tentar autenticar
         if (sistemaLogin.autenticar(id, senha)) {
+            //variavei globais para fixar o nome do usuario logado
+            usuarioLogadoGlobal = sistemaLogin.getUsuarioLogado();
+            funcaoUsuarioGlobal = sistemaLogin.getFuncaoUsuario();
             // Registrar atividade de login
             RegistroAtividade.registrarLogin(sistemaLogin.getUsuarioLogado(), sistemaLogin.getFuncaoUsuario());
             
@@ -345,6 +358,10 @@ public class Login extends javax.swing.JFrame {
                 "Erro", JOptionPane.ERROR_MESSAGE);
     }*/
     
+    /**
+     * Abre o menu correspondente à função do usuário autenticado.
+     * Gestor, Bibliotecário ou ADM.
+     */
     private void abrirMenuCorrespondente() {
     String nomeUsuario = sistemaLogin.getUsuarioLogado();
     String funcao = sistemaLogin.getFuncaoUsuario();

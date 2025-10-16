@@ -23,9 +23,20 @@ import javax.swing.DefaultListModel;
 import model.Livros;
 import model.Visitantes; 
 import model.Emprestimos;
+import controller.SistemaLogin;
+
+/**
+ * Janela principal do funcionário/bibliotecário.
+ * Gerencia visitantes, empréstimos e atividades da biblioteca.
+ */
 
 
 public class MenuFuncionario2 extends javax.swing.JFrame {
+    
+    /**
+     * Construtor que inicializa a interface do funcionário.
+     * Configura painéis, contadores e carrega dados iniciais.
+     */
     
     private String nomeFuncionarioLogado;
     private VisitantesDAO visitantesDAO = new VisitantesDAO();
@@ -40,7 +51,7 @@ public class MenuFuncionario2 extends javax.swing.JFrame {
 public void setNomeUsuario(String nome) {
     this.nomeUsuario = nome;
 }
-    
+   
    
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MenuFuncionario2.class.getName());
@@ -48,7 +59,9 @@ public void setNomeUsuario(String nome) {
        public MenuFuncionario2() {
         initComponents();
         
-        
+       String nomeUsuario = Login.usuarioLogadoGlobal;
+    this.setTitle("Bibliotecário/a - " + nomeUsuario);
+    
         setLocationRelativeTo(null);
     setResizable(false);
         // Configurar visibilidade inicial
@@ -1221,9 +1234,34 @@ public void setNomeUsuario(String nome) {
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
-
+               // Imprimir Relatorio
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+     
+    int totalVisitantes = contadorVisitantes;
+    int totalEmprestimos = contadorLivrosEmprestados;
+    double totalMultas = 0;
+    
+    // Calcular total de multas
+    for (Emprestimos emp : (List<Emprestimos>) emprestimoDAO.listarEmprestimos()) {
+        totalMultas += emprestimoDAO.calcularMulta(emp);
+    }
+    
+    double taxaEmprestimo = configDAO.getTaxaEmprestimo();
+    
+    String relatorio = "=== RELATÓRIO DO BIBLIOTECÁRIO ===\n" +
+                      "Data: " + java.time.LocalDate.now() + "\n" +
+                      "Total de visitantes: " + totalVisitantes + "\n" +
+                      "Total de empréstimos: " + totalEmprestimos + "\n" +
+                      "Taxa atual por livro: " + taxaEmprestimo + " MZN\n" +
+                      "Total em multas: " + totalMultas + " MZN\n" +
+                      "Receita total: " + (totalEmprestimos * taxaEmprestimo) + " MZN\n" +
+                      "============================";
+    
+    JOptionPane.showMessageDialog(this, relatorio, "Relatório do Bibliotecário", JOptionPane.INFORMATION_MESSAGE);
+     
+
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void lupaLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lupaLabelMouseEntered
@@ -1555,8 +1593,8 @@ RegistroAtividade.registrarEmprestimo(
         java.util.List<Emprestimos> todosEmprestimos = emprestimoDAO.listarEmprestimos();
         
         for (Visitantes visitante : visitantesEncontrados) {
-            String livroId = "N/A";
-            String tituloLivro = "Visita";
+            String livroId = "LIVRO-" + visitante.getLivroId(); 
+            String tituloLivro = visitante.getTituloLivro();
             
             // Buscar emprestimo correspondente
             for (Emprestimos emp : todosEmprestimos) {
