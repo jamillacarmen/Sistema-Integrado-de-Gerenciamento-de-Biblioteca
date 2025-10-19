@@ -5,6 +5,7 @@ view\MenuFuncionario2$23.class
 view\MenuGestor$8.class
 view\MenuFuncionario2$33.class
 view\MenuFuncionario2$13.class
+view\MenuAdm$29.class
 view\Login$2.class
 view\MenuAdm$9.class
 view\MenuAdm$19.class
@@ -12,6 +13,7 @@ poo\sigb\trabalhosemestral\SIGBTrabalhoSemestral.class
 view\MenuGestor$10.class
 view\MenuFuncionario2$10.class
 view\MenuFuncionario2.class
+view\MenuGestor$20.class
 view\MenuGestor$13.class
 view\MenuAdm$16.class
 view\MenuAdm$21.class
@@ -21,6 +23,7 @@ view\MenuGestor$3.class
 view\MenuAdm$24.class
 view\AlterarSenha$2.class
 view\MenuAdm$3.class
+view\AlterarSenha$8.class
 view\Login$5.class
 view\MenuGestor$16.class
 view\MenuFuncionario2$26.class
@@ -41,6 +44,7 @@ view\AlterarSenha$7.class
 model\Atividade.class
 view\MenuFuncionario2$25.class
 view\MenuAdm$23.class
+view\MenuFuncionario2$35.class
 view\MenuFuncionario2$5.class
 view\MenuAdm$11.class
 view\MenuFuncionario2$12.class
@@ -55,6 +59,7 @@ view\Login$6.class
 view\MenuFuncionario2$24.class
 view\MenuFuncionario2$6.class
 view\MenuAdm$22.class
+view\MenuFuncionario2$36.class
 controller\Main.class
 view\MenuGestor$11.class
 view\MenuGestor$5.class
@@ -71,6 +76,7 @@ view\MenuGestor$4.class
 model\Gestor.class
 view\MenuGestor$1.class
 view\MenuAdm$2.class
+view\MenuFuncionario2$37.class
 view\MenuFuncionario2$22.class
 model\Emprestimos.class
 view\MenuFuncionario2$17.class
@@ -85,9 +91,13 @@ view\MenuGestor$7.class
 model\Visitantes.class
 DAO\EmprestimosDAO.class
 controller\RegistroAtividade.class
+view\MenuFuncionario2$34.class
 view\MenuAdm$12.class
+view\MenuAdm$32.class
+view\MenuGestor$21.class
 view\MenuFuncionario2$11.class
 view\MenuFuncionario2$1.class
+view\MenuAdm$30.class
 view\AlterarSenha.class
 view\AlterarSenha$3.class
 view\MenuFuncionario2$8.class
@@ -109,6 +119,7 @@ view\MenuFuncionario2$27.class
 view\MenuFuncionario2$32.class
 view\Login$3.class
 view\MenuAdm$26.class
+view\MenuAdm$31.class
 view\MenuGestor$2.class
 view\MenuAdm$14.class
 view\Login.class

@@ -79,11 +79,13 @@ public class DetalhesAtividade extends javax.swing.JFrame {
         JButton btnImprimir = new JButton("Imprimir Relatório");
         btnImprimir.setBackground(new Color(94, 42, 43));
         btnImprimir.setForeground(Color.WHITE);
+        btnImprimir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnImprimir.addActionListener(e -> imprimirRelatorio());
         
         JButton btnFechar = new JButton("Fechar");
         btnFechar.setBackground(new Color(201, 169, 154));
         btnFechar.setForeground(new Color(94, 42, 43));
+        btnFechar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnFechar.addActionListener(e -> dispose());
         
         buttonPanel.add(btnImprimir);

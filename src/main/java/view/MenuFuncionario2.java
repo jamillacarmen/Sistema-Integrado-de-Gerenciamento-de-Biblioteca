@@ -487,12 +487,27 @@ public void setNomeUsuario(String nome) {
             jTextField5ActionPerformed(evt);
         }
     });
+    jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField5KeyPressed(evt);
+        }
+    });
 
     jTextField6.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
     jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(94, 42, 43)));
+    jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField6KeyPressed(evt);
+        }
+    });
 
     jTextField7.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
     jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(94, 42, 43)));
+    jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField7KeyPressed(evt);
+        }
+    });
 
     jTextField8.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
     jTextField8.setText("Bairro/Av/Rua/Quarteirão/Casa");
@@ -923,6 +938,11 @@ public void setNomeUsuario(String nome) {
 
     jTextField2.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
     jTextField2.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(94, 42, 43)));
+    jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField2KeyPressed(evt);
+        }
+    });
 
     jTextField3.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
     jTextField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(94, 42, 43)));
@@ -1072,7 +1092,7 @@ public void setNomeUsuario(String nome) {
             .addComponent(jP01, javax.swing.GroupLayout.DEFAULT_SIZE, 406, Short.MAX_VALUE))
     );
 
-    getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 780, 470));
+    getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 780, 480));
 
     pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1656,7 +1676,7 @@ RegistroAtividade.registrarEmprestimo(
 
     private void btnDetalhesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDetalhesActionPerformed
         // TODO add your handling code here:
-                                                   
+                                             
     int selectedRow = jTable3.getSelectedRow();
     if (selectedRow == -1) {
         JOptionPane.showMessageDialog(this, "Selecione um empréstimo na tabela!", "Aviso", JOptionPane.WARNING_MESSAGE);
@@ -1676,24 +1696,81 @@ RegistroAtividade.registrarEmprestimo(
         }
         
         if (emprestimo != null) {
-            String detalhes = "=== DETALHES COMPLETOS ===\n" +
-                             "Nome: " + emprestimo.getNome() + "\n" +
-                             "Contacto: " + emprestimo.getContacto() + "\n" +
-                             "BI: " + emprestimo.getBi() + "\n" +
-                             "Endereço: " + emprestimo.getEndereco() + "\n" +
-                             "Livro: " + emprestimo.getTituloLivro() + "\n" +
-                             "ID do Livro: " + emprestimo.getLivroId() + "\n" +
-                             "Valor: " + emprestimo.getValor() + " MZN\n" +
-                             "Data de Empréstimo: " + 
-                             emprestimo.getDataLimite().minusDays(7).format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + "\n" +
-                             "Data de Devolução: " + 
-                             emprestimo.getDataLimite().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-            
-            JOptionPane.showMessageDialog(this, detalhes, "Detalhes do Empréstimo", JOptionPane.INFORMATION_MESSAGE);
+            mostrarDetalhesEmprestimo(emprestimo);
         }
     } catch (Exception e) {
         JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
     }
+}
+
+private void mostrarDetalhesEmprestimo(Emprestimos emprestimo) {
+    // Criar janela similar à DetalhesAtividade
+    JFrame detalhesFrame = new JFrame("Detalhes do Empréstimo");
+    detalhesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    detalhesFrame.setSize(600, 500);
+    detalhesFrame.setLocationRelativeTo(this);
+    detalhesFrame.setResizable(false);
+    
+    // Layout principal
+    JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
+    mainPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+    
+    // Título
+    JLabel tituloLabel = new JLabel("DETALHES DO EMPRÉSTIMO");
+    tituloLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+    tituloLabel.setForeground(new Color(94, 42, 43));
+    tituloLabel.setHorizontalAlignment(SwingConstants.CENTER);
+    
+    // Painel de detalhes
+    JPanel detalhesPanel = new JPanel(new GridLayout(0, 2, 10, 10));
+    detalhesPanel.setBorder(BorderFactory.createTitledBorder("Informações do Empréstimo"));
+    
+    // Calcular datas
+    String dataEmprestimo = emprestimo.getDataLimite().minusDays(7).format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    String dataDevolucao = emprestimo.getDataLimite().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    
+    // Adicionar campos
+    adicionarCampoEmprestimo(detalhesPanel, "Nome:", emprestimo.getNome());
+    adicionarCampoEmprestimo(detalhesPanel, "Contacto:", emprestimo.getContacto());
+    adicionarCampoEmprestimo(detalhesPanel, "BI:", emprestimo.getBi());
+    adicionarCampoEmprestimo(detalhesPanel, "Endereço:", emprestimo.getEndereco());
+    adicionarCampoEmprestimo(detalhesPanel, "Livro:", emprestimo.getTituloLivro());
+    adicionarCampoEmprestimo(detalhesPanel, "ID do Livro:", "LIVRO - " + String.valueOf(emprestimo.getLivroId()));
+    adicionarCampoEmprestimo(detalhesPanel, "Valor:", emprestimo.getValor() + " MZN");
+    adicionarCampoEmprestimo(detalhesPanel, "Data de Empréstimo:", dataEmprestimo);
+    adicionarCampoEmprestimo(detalhesPanel, "Data de Devolução:", dataDevolucao);
+    
+    // Painel de botões - apenas Fechar
+    JPanel buttonPanel = new JPanel(new FlowLayout());
+    
+    JButton btnFechar = new JButton("Fechar");
+    btnFechar.setBackground(new Color(201, 169, 154));
+    btnFechar.setForeground(new Color(94, 42, 43));
+    btnFechar.addActionListener(e -> detalhesFrame.dispose());
+    
+    buttonPanel.add(btnFechar);
+    
+    // Montar layout
+    mainPanel.add(tituloLabel, BorderLayout.NORTH);
+    mainPanel.add(detalhesPanel, BorderLayout.CENTER);
+    mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+    
+    detalhesFrame.add(mainPanel);
+    detalhesFrame.setVisible(true);
+}
+
+private void adicionarCampoEmprestimo(JPanel panel, String label, String valor) {
+    JLabel lbl = new JLabel(label);
+    lbl.setFont(new Font("Segoe UI", Font.BOLD, 12));
+    
+    JTextField field = new JTextField(valor != null ? valor : "");
+    field.setEditable(false);
+    field.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+    field.setBackground(Color.WHITE);
+    field.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+    
+    panel.add(lbl);
+    panel.add(field);
                                                   
     }//GEN-LAST:event_btnDetalhesActionPerformed
 
@@ -1701,6 +1778,34 @@ RegistroAtividade.registrarEmprestimo(
         // TODO add your handling code here:
          jTable3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }//GEN-LAST:event_jTable3MouseEntered
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jTextField5.requestFocus(); // Vai para o campo de contacto
+    }
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jTextField7.requestFocus(); // Vai para o campo de BI
+    }
+    }//GEN-LAST:event_jTextField5KeyPressed
+
+    private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jTextField8.requestFocus(); // Vai para o campo de endereco
+    }
+    }//GEN-LAST:event_jTextField7KeyPressed
+
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jTextField3.requestFocus(); // Vai para o campo de contacto
+    }
+    }//GEN-LAST:event_jTextField2KeyPressed
       
     /**
      * @param args the command line arguments

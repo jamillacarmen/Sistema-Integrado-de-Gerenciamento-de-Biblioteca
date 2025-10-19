@@ -50,7 +50,7 @@ public class VisitantesDAO extends BaseDAO {
     LocalDate hoje = LocalDate.now(); // sempre a data de hoje
     int count = 0;
     for (Visitantes v : visitantes) {
-        if (v.getDataVisita().equals(hoje)) { // so conta se for hj no dia seguinte comeca de novo
+        if (v.getDataVisita().equals(hoje)) { // so conta se for hj, no dia seguinte comeca de novo
             count++;
         }
     }

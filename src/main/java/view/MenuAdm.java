@@ -435,15 +435,30 @@ public class MenuAdm extends javax.swing.JFrame {
             jTextField5ActionPerformed(evt);
         }
     });
+    jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField5KeyPressed(evt);
+        }
+    });
 
     jTextField6.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
     jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(94, 42, 43)));
+    jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField6KeyPressed(evt);
+        }
+    });
 
     jTextField7.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
     jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(94, 42, 43)));
     jTextField7.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jTextField7ActionPerformed(evt);
+        }
+    });
+    jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField7KeyPressed(evt);
         }
     });
 
@@ -474,6 +489,11 @@ public class MenuAdm extends javax.swing.JFrame {
     jTextField8.addActionListener(new java.awt.event.ActionListener() {
         public void actionPerformed(java.awt.event.ActionEvent evt) {
             jTextField8ActionPerformed(evt);
+        }
+    });
+    jTextField8.addKeyListener(new java.awt.event.KeyAdapter() {
+        public void keyPressed(java.awt.event.KeyEvent evt) {
+            jTextField8KeyPressed(evt);
         }
     });
 
@@ -864,7 +884,7 @@ public class MenuAdm extends javax.swing.JFrame {
         }
         
     } else if (AtividadeGestPanel.isVisible()) {
-        JOptionPane.showMessageDialog(this, "Pesquisa em atividades em desenvolvimento...");
+        pesquisarAtividades(termo);
     }
 
     }//GEN-LAST:event_lupaLabelMouseClicked
@@ -1074,42 +1094,97 @@ private void mostrarDetalhesUtilizador(int linha) {
     String contacto = UtilizadorTable.getValueAt(linha, 2).toString();
     String cargo = (String) UtilizadorTable.getValueAt(linha, 3);
     
-    String detalhes = "=== DETALHES DO UTILIZADOR ===\n" +
-                     "ID: " + id + "\n" +
-                     "Nome: " + nome + "\n" +
-                     "Contacto: " + contacto + "\n" +
-                     "Cargo: " + cargo + "\n";
+    // Buscar informações adicionais
+    String bi = "";
+    String email = "";
     
-    // Buscar informaçoes adicionais
     if ("Gestor".equals(cargo)) {
-     Gestor gestor = null;
-for (Gestor g : gestorDAO.listarGestores()) {
-    if (g.getId() == id) {
-        gestor = g;
-        break;
-    }
-}
+        Gestor gestor = null;
+        for (Gestor g : gestorDAO.listarGestores()) {
+            if (g.getId() == id) {
+                gestor = g;
+                break;
+            }
+        }
         if (gestor != null) {
-            detalhes += "BI: " + gestor.getBi() + "\n" +
-                       "Email: " + gestor.getEmail() + "\n";
+            bi = gestor.getBi();
+            email = gestor.getEmail();
         }
     } else {
-       Bibliotecario bibliotecario = null;
-for (Bibliotecario b : bibliotecarioDAO.listarBibliotecarios()) {
-    if (b.getId() == id) {
-        bibliotecario = b;
-        break;
-    }
-}
+        Bibliotecario bibliotecario = null;
+        for (Bibliotecario b : bibliotecarioDAO.listarBibliotecarios()) {
+            if (b.getId() == id) {
+                bibliotecario = b;
+                break;
+            }
+        }
         if (bibliotecario != null) {
-            detalhes += "BI: " + bibliotecario.getBi() + "\n" +
-                       "Email: " + bibliotecario.getEmail() + "\n";
+            bi = bibliotecario.getBi();
+            email = bibliotecario.getEmail();
         }
     }
     
-    detalhes += "===============================";
+    // Criar janela similar à DetalhesAtividade
+    JFrame detalhesFrame = new JFrame("Detalhes do Utilizador");
+    detalhesFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    detalhesFrame.setSize(500, 400);
+    detalhesFrame.setLocationRelativeTo(this);
+    detalhesFrame.setResizable(false);
     
-    JOptionPane.showMessageDialog(this, detalhes, "Detalhes do Utilizador", JOptionPane.INFORMATION_MESSAGE);
+    // Layout principal
+    JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
+    mainPanel.setBorder(BorderFactory.createEmptyBorder(15, 15, 15, 15));
+    
+    // Título
+    JLabel tituloLabel = new JLabel("DETALHES DO UTILIZADOR");
+    tituloLabel.setFont(new Font("Times New Roman", Font.BOLD, 18));
+    tituloLabel.setForeground(new Color(94, 42, 43));
+    tituloLabel.setHorizontalAlignment(SwingConstants.CENTER);
+    
+    // Painel de detalhes
+    JPanel detalhesPanel = new JPanel(new GridLayout(0, 2, 10, 10));
+    detalhesPanel.setBorder(BorderFactory.createTitledBorder("Informações do Utilizador"));
+    
+    // Adicionar campos
+    adicionarCampoUtilizador(detalhesPanel, "ID:", String.valueOf(id));
+    adicionarCampoUtilizador(detalhesPanel, "Nome:", nome);
+    adicionarCampoUtilizador(detalhesPanel, "Contacto:", contacto);
+    adicionarCampoUtilizador(detalhesPanel, "Cargo:", cargo);
+    adicionarCampoUtilizador(detalhesPanel, "BI:", bi);
+    adicionarCampoUtilizador(detalhesPanel, "Email:", email);
+    
+    // Painel de botões - apenas Fechar
+    JPanel buttonPanel = new JPanel(new FlowLayout());
+    
+    JButton btnFechar = new JButton("Fechar");
+    btnFechar.setBackground(new Color(201, 169, 154));
+    btnFechar.setForeground(new Color(94, 42, 43));
+    btnFechar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+    btnFechar.addActionListener(e -> detalhesFrame.dispose());
+    
+    buttonPanel.add(btnFechar);
+    
+    // Montar layout
+    mainPanel.add(tituloLabel, BorderLayout.NORTH);
+    mainPanel.add(detalhesPanel, BorderLayout.CENTER);
+    mainPanel.add(buttonPanel, BorderLayout.SOUTH);
+    
+    detalhesFrame.add(mainPanel);
+    detalhesFrame.setVisible(true);
+}
+
+private void adicionarCampoUtilizador(JPanel panel, String label, String valor) {
+    JLabel lbl = new JLabel(label);
+    lbl.setFont(new Font("Segoe UI", Font.BOLD, 12));
+    
+    JTextField field = new JTextField(valor != null ? valor : "");
+    field.setEditable(false);
+    field.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+    field.setBackground(Color.WHITE);
+    field.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+    
+    panel.add(lbl);
+    panel.add(field);
 
     }//GEN-LAST:event_UtilizadorTableMouseClicked
 
@@ -1260,6 +1335,34 @@ for (Bibliotecario b : bibliotecarioDAO.listarBibliotecarios()) {
          UtilizadorTable.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }//GEN-LAST:event_UtilizadorTableMouseEntered
 
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jTextField5.requestFocus(); // Vai para o campo de BI
+    }
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jTextField7.requestFocus(); // Vai para o campo de contacto
+    }
+    }//GEN-LAST:event_jTextField5KeyPressed
+
+    private void jTextField7KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jTextField8.requestFocus(); // Vai para o campo de email
+    }
+    }//GEN-LAST:event_jTextField7KeyPressed
+
+    private void jTextField8KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jTextField9.requestFocus(); // Vai para o campo de senha
+    }
+    }//GEN-LAST:event_jTextField8KeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -1309,6 +1412,16 @@ private void carregarTabelaAtividades() {
     };
     
     tabelaAtividades.setModel(model);
+    
+    DefaultTableCellRenderer headerRenderer4 = new DefaultTableCellRenderer();
+    headerRenderer4.setBackground(new java.awt.Color(201, 169, 154)); 
+    headerRenderer4.setForeground(new java.awt.Color(94,42,43));                     
+    headerRenderer4.setFont(new java.awt.Font("Times New Roman", java.awt.Font.ITALIC, 14));
+
+       // Aplica em todas as colunas do cabeçalho
+    for (int i = 0; i < tabelaAtividades.getColumnModel().getColumnCount(); i++) {
+    tabelaAtividades.getColumnModel().getColumn(i).setHeaderRenderer(headerRenderer4);
+  }
     
     // Carregar dados
     for (Atividade atividade : atividadeDAO.listarTodasAtividades()) {
@@ -1469,6 +1582,58 @@ private void limparCamposRegistro() {
     jTextField8.setText("");
     jTextField9.setText("");
     jComboBox1.setSelectedIndex(0);
+}
+
+// MÉTODO PARA PESQUISAR ATIVIDADES
+private void pesquisarAtividades(String termo) {
+    DefaultTableModel model = (DefaultTableModel) tabelaAtividades.getModel();
+    model.setRowCount(0);
+    
+    boolean encontrou = false;
+    
+    try {
+        // Pesquisar em todas as atividades
+        for (Atividade atividade : atividadeDAO.listarTodasAtividades()) {
+            // Verificar se o termo está em qualquer campo da atividade
+            if (atividade.getDataHora().toLowerCase().contains(termo) ||
+                atividade.getNomeUsuario().toLowerCase().contains(termo) ||
+                atividade.getFuncaoUsuario().toLowerCase().contains(termo) ||
+                atividade.getTipoAcao().toLowerCase().contains(termo) ||
+                atividade.getDetalhes().toLowerCase().contains(termo) ||
+                atividade.getModulo().toLowerCase().contains(termo) ||
+                (atividade.getDadosExtras() != null && atividade.getDadosExtras().toLowerCase().contains(termo))) {
+                
+                model.addRow(new Object[]{
+                    atividade.getDataHora(),
+                    atividade.getNomeUsuario(),
+                    atividade.getFuncaoUsuario(),
+                    atividade.getTipoAcao(),
+                    atividade.getDetalhes(),
+                    atividade.getModulo()
+                });
+                encontrou = true;
+            }
+        }
+        
+        if (!encontrou) {
+            JOptionPane.showMessageDialog(this, 
+                "Nenhuma atividade encontrada com: " + termo, 
+                "Pesquisa", 
+                JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            // Mostrar quantos resultados foram encontrados
+            JOptionPane.showMessageDialog(this, 
+                "Encontradas " + model.getRowCount() + " atividades com: " + termo, 
+                "Resultados da Pesquisa", 
+                JOptionPane.INFORMATION_MESSAGE);
+        }
+        
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, 
+            "Erro ao pesquisar atividades: " + e.getMessage(), 
+            "Erro", 
+            JOptionPane.ERROR_MESSAGE);
+    }
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

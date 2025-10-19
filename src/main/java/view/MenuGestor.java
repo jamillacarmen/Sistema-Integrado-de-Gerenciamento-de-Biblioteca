@@ -452,9 +452,19 @@ this.configDAO = new ConfiguracaoDAO();
                 jTextField5ActionPerformed(evt);
             }
         });
+        jTextField5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField5KeyPressed(evt);
+            }
+        });
 
         jTextField6.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         jTextField6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(94, 42, 43)));
+        jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextField6KeyPressed(evt);
+            }
+        });
 
         jTextField7.setFont(new java.awt.Font("Times New Roman", 0, 13)); // NOI18N
         jTextField7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(94, 42, 43)));
@@ -1049,6 +1059,20 @@ private void limparCamposCadastro() {
         // TODO add your handling code here:
         SairLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }//GEN-LAST:event_SairLabelMouseEntered
+
+    private void jTextField6KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField6KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jTextField5.requestFocus(); // Vai para o campo de genero
+    }
+    }//GEN-LAST:event_jTextField6KeyPressed
+
+    private void jTextField5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyPressed
+        // TODO add your handling code here:
+         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        jTextField7.requestFocus(); // Vai para o campo de titulo
+    }
+    }//GEN-LAST:event_jTextField5KeyPressed
 
     /**
      * @param args the command line arguments
