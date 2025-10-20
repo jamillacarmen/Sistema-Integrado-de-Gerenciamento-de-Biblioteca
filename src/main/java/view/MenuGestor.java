@@ -57,7 +57,7 @@ public void setNomeUsuario(String nome) {
         initComponents();
        // puxa o nome do usuario logado a partir do login 
         String nomeUsuario = Login.usuarioLogadoGlobal;
-    this.setTitle("Gestor/a - " + nomeUsuario);
+    this.setTitle("Gestor - " + nomeUsuario);
     
         setLocationRelativeTo(null);
     setResizable(false);
@@ -318,49 +318,15 @@ this.configDAO = new ConfiguracaoDAO();
 
         BibliotecaTable.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         BibliotecaTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
+            new Object [][] {},
             new String [] {
-                "ID", "Genero", "Tilulo", "Autor", "Disponiveis"
+                "ID", "Genero", "Tilulo", "Autor", "Disponiveis" }
+        ){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Tabela não editável
             }
-        ));
-        BibliotecaTable.setGridColor(new java.awt.Color(255, 255, 255));
-        BibliotecaTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        });
         jScrollPane1.setViewportView(BibliotecaTable);
         DefaultTableCellRenderer headerRenderer = new DefaultTableCellRenderer();
         headerRenderer.setBackground(new java.awt.Color(201, 169, 154));
@@ -560,39 +526,15 @@ this.configDAO = new ConfiguracaoDAO();
 
         jTable4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
+            new Object [][] {},
             new String [] {
-                "Data de solicitação", "Nome", "Livro ID", "Valor", "Multa"
+                "Data de solicitação", "Nome", "Livro ID", "Valor", "Multa"}
+        ){
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Tabela não editável
             }
-        ));
-        jTable4.setGridColor(new java.awt.Color(255, 255, 255));
-        jTable4.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        });
         jScrollPane5.setViewportView(jTable4);
         DefaultTableCellRenderer headerRenderer4 = new DefaultTableCellRenderer();
         headerRenderer4.setBackground(new java.awt.Color(201, 169, 154));
@@ -836,16 +778,52 @@ this.configDAO = new ConfiguracaoDAO();
         totalMultas += emprestimoDAO.calcularMulta(emp);
     }
     
-    String relatorio = "=== RELATÓRIO DO GESTOR ===\n" +
+     JTextArea textoRelatorio = new JTextArea();
+    textoRelatorio.setEditable(false);
+    textoRelatorio.setFont(new Font("Monospaced", Font.BOLD, 12));
+    
+    String relatorio = "===== RELATÓRIO DE ATIVIDADES =====\n" +
                       "Data: " + java.time.LocalDate.now() + "\n" +
                       "Total de livros cadastrados: " + totalLivros + "\n" +
                       "Total de empréstimos: " + totalEmprestimos + "\n" +
                       "Taxa atual por livro: " + taxaEmprestimo + " MZN\n" +
                       "Total em multas: " + totalMultas + " MZN\n" +
                       "Receita total: " + (totalEmprestimos * taxaEmprestimo) + " MZN\n" +
-                      "============================";
+                      "Total geral: " + ( (totalMultas + (totalEmprestimos * taxaEmprestimo))) + " MZN\n\n" +
+                      "-------------------------------------------------\n"+
+                       "Sistema SIGB - Relatório de Atividade";
+                 textoRelatorio.setText(relatorio);
     
-    JOptionPane.showMessageDialog(this, relatorio, "Relatório do Gestor", JOptionPane.INFORMATION_MESSAGE);
+    // Diálogo de confirmação antes de imprimir
+    int option = JOptionPane.showConfirmDialog(this, 
+        "Deseja imprimir o relatório de Atividades?",
+        "Confirmar Impressão", 
+        JOptionPane.YES_NO_OPTION);
+    
+    if (option == JOptionPane.YES_OPTION) {
+        try {
+            // Executar impressão real
+            boolean printed = textoRelatorio.print();
+            
+            if (printed) {
+                JOptionPane.showMessageDialog(this, 
+                    "Relatório enviado para impressão com sucesso!",
+                    "Impressão Concluída", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                    "Impressão cancelada pelo usuário",
+                    "Impressão Cancelada", 
+                    JOptionPane.WARNING_MESSAGE);
+            }
+            
+        } catch (java.awt.print.PrinterException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Erro ao imprimir: " + e.getMessage(),
+                "Erro de Impressão", 
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }
      
     }//GEN-LAST:event_jButton5ActionPerformed
 

@@ -60,7 +60,7 @@ public void setNomeUsuario(String nome) {
         initComponents();
         
        String nomeUsuario = Login.usuarioLogadoGlobal;
-    this.setTitle("Bibliotecário/a - " + nomeUsuario);
+    this.setTitle("Bibliotecário - " + nomeUsuario);
     
         setLocationRelativeTo(null);
     setResizable(false);
@@ -618,16 +618,7 @@ public void setNomeUsuario(String nome) {
 
     jTable3.setFont(new java.awt.Font("Times New Roman", 0, 12));
     jTable3.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null},
-            {null, null, null, null, null}
-        },
+        new Object [][] {},
         new String [] {
             "Data de solicitação", "Nome", "Livro ID", "Valor", "Multa"
         }
@@ -641,8 +632,6 @@ public void setNomeUsuario(String nome) {
     jTable3.setRowSelectionAllowed(true);
     jTable3.setColumnSelectionAllowed(false);
     jTable3.setFocusable(true);
-    jTable3.setGridColor(new java.awt.Color(255, 255, 255));
-    jTable3.setSelectionBackground(new java.awt.Color(255, 255, 255));
     jTable3.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
             jTable3MouseClicked(evt);
@@ -705,17 +694,16 @@ public void setNomeUsuario(String nome) {
     LivroEmprestadosPanelLayout.setHorizontalGroup(
         LivroEmprestadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(LivroEmprestadosPanelLayout.createSequentialGroup()
-            .addGap(63, 63, 63)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addContainerGap(81, Short.MAX_VALUE))
-        .addGroup(LivroEmprestadosPanelLayout.createSequentialGroup()
             .addGap(60, 60, 60)
-            .addComponent(btnDetalhes)
-            .addGap(18, 18, 18)
-            .addComponent(jButton3)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton4)
-            .addGap(165, 165, 165))
+            .addGroup(LivroEmprestadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(LivroEmprestadosPanelLayout.createSequentialGroup()
+                    .addComponent(btnDetalhes)
+                    .addGap(18, 18, 18)
+                    .addComponent(jButton3)
+                    .addGap(343, 343, 343)
+                    .addComponent(jButton4))
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 626, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addContainerGap(81, Short.MAX_VALUE))
     );
     LivroEmprestadosPanelLayout.setVerticalGroup(
         LivroEmprestadosPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -740,39 +728,15 @@ public void setNomeUsuario(String nome) {
 
     jTable4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
     jTable4.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null},
-            {null, null, null}
-        },
+        new Object [][] {},
         new String [] {
-            "Data de solicitação", "Nome", "Livro ID"
+            "Data de solicitação", "Nome", "Livro ID"}
+    ){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Tabela não editável
         }
-    ));
-    jTable4.setGridColor(new java.awt.Color(255, 255, 255));
-    jTable4.setSelectionBackground(new java.awt.Color(255, 255, 255));
+    });
     jScrollPane5.setViewportView(jTable4);
     DefaultTableCellRenderer headerRenderer4 = new DefaultTableCellRenderer();
     headerRenderer4.setBackground(new java.awt.Color(201, 169, 154));
@@ -877,49 +841,15 @@ public void setNomeUsuario(String nome) {
 
     jTable2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
     jTable2.setModel(new javax.swing.table.DefaultTableModel(
-        new Object [][] {
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null},
-            {null, null, null, null}
-        },
+        new Object [][] {},
         new String [] {
-            "Nome", "Contacto", "ID", "Titulo"
+            "Nome", "Contacto", "ID", "Titulo"}
+    ){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false; // Tabela não editável
         }
-    ));
-    jTable2.setGridColor(new java.awt.Color(255, 255, 255));
-    jTable2.setSelectionBackground(new java.awt.Color(255, 255, 255));
+    });
     jScrollPane2.setViewportView(jTable2);
     DefaultTableCellRenderer headerRenderer2 = new DefaultTableCellRenderer();
     headerRenderer2.setBackground(new java.awt.Color(201, 169, 154));
@@ -1237,17 +1167,51 @@ public void setNomeUsuario(String nome) {
     String valor = (String) jTable3.getValueAt(selectedRow, 3);
     String multa = (String) jTable3.getValueAt(selectedRow, 4);
     
-    // Simular impressao de recibo
-    String recibo = "=== RECIBO DE EMPRÉSTIMO ===\n" +
+    // impressao de recibo
+     JTextArea textoRecibo = new JTextArea();
+    textoRecibo.setEditable(false);
+    textoRecibo.setFont(new Font("Monospaced", Font.BOLD, 12));
+    
+    String recibo = "===== RECIBO DE EMPRÉSTIMO =====\n" +
                    "Cliente: " + nome + "\n" +
                    "Data do empréstimo: " + data + "\n" +
                    "Valor: " + valor + "\n" +
                    "Multa: " + multa + "\n" +
                    "Data do recibo: " + java.time.LocalDate.now() + "\n" +
-                   "Bibliotecário: Sistema SIGB\n" +
-                   "=============================";
+                   "------------------------------------------\n" +
+                   "Sistema SIGB - Recibo de Emprestimo";
+             textoRecibo.setText(recibo);
     
-    JOptionPane.showMessageDialog(this, recibo, "Recibo Impresso", JOptionPane.INFORMATION_MESSAGE);
+    // Diálogo de confirmação antes de imprimir
+    int option = JOptionPane.showConfirmDialog(this, 
+        "Deseja imprimir o recibo?",
+        "Confirmar Impressão", 
+        JOptionPane.YES_NO_OPTION);
+    
+    if (option == JOptionPane.YES_OPTION) {
+        try {
+            // Executar impressão real
+            boolean printed = textoRecibo.print();
+            
+            if (printed) {
+                JOptionPane.showMessageDialog(this, 
+                    "Recibo enviado para impressão com sucesso!",
+                    "Impressão Concluída", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                    "Impressão cancelada pelo usuário",
+                    "Impressão Cancelada", 
+                    JOptionPane.WARNING_MESSAGE);
+            }
+            
+        } catch (java.awt.print.PrinterException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Erro ao imprimir: " + e.getMessage(),
+                "Erro de Impressão", 
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -1269,16 +1233,52 @@ public void setNomeUsuario(String nome) {
     
     double taxaEmprestimo = configDAO.getTaxaEmprestimo();
     
-    String relatorio = "=== RELATÓRIO DO BIBLIOTECÁRIO ===\n" +
+     // Criar JTextArea com o relatório formatado
+    JTextArea textoRelatorio = new JTextArea();
+    textoRelatorio.setEditable(false);
+    textoRelatorio.setFont(new Font("Monospaced", Font.BOLD, 12));
+    
+    String relatorio = "===== RELATÓRIO DE ATIVIDADES =====\n" +
                       "Data: " + java.time.LocalDate.now() + "\n" +
                       "Total de visitantes: " + totalVisitantes + "\n" +
                       "Total de empréstimos: " + totalEmprestimos + "\n" +
                       "Taxa atual por livro: " + taxaEmprestimo + " MZN\n" +
                       "Total em multas: " + totalMultas + " MZN\n" +
                       "Receita total: " + (totalEmprestimos * taxaEmprestimo) + " MZN\n" +
-                      "============================";
+                      "---------------------------------------\n" +
+                      "Sistema SIGB - Relatório de Atividade";
+                     textoRelatorio.setText(relatorio);
     
-    JOptionPane.showMessageDialog(this, relatorio, "Relatório do Bibliotecário", JOptionPane.INFORMATION_MESSAGE);
+   // Diálogo de confirmação antes de imprimir
+    int option = JOptionPane.showConfirmDialog(this, 
+        "Deseja imprimir o relatório?",
+        "Confirmar Impressão", 
+        JOptionPane.YES_NO_OPTION);
+    
+    if (option == JOptionPane.YES_OPTION) {
+        try {
+            // Executar impressão real
+            boolean printed = textoRelatorio.print();
+            
+            if (printed) {
+                JOptionPane.showMessageDialog(this, 
+                    "Relatório enviado para impressão com sucesso!",
+                    "Impressão Concluída", 
+                    JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, 
+                    "Impressão cancelada pelo usuário",
+                    "Impressão Cancelada", 
+                    JOptionPane.WARNING_MESSAGE);
+            }
+            
+        } catch (java.awt.print.PrinterException e) {
+            JOptionPane.showMessageDialog(this, 
+                "Erro ao imprimir: " + e.getMessage(),
+                "Erro de Impressão", 
+                JOptionPane.ERROR_MESSAGE);
+        }
+    }
      
 
         

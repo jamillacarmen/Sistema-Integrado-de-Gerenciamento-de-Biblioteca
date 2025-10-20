@@ -36,6 +36,7 @@ view\MenuFuncionario2$31.class
 view\MenuGestor$19.class
 view\MenuAdm$7.class
 view\MenuGestor$12.class
+view\MenuGestor$22.class
 view\MenuGestor$6.class
 view\DetalhesAtividade.class
 DAO\AtividadeDAO.class
@@ -55,6 +56,7 @@ view\MenuFuncionario2$30.class
 view\MenuAdm$28.class
 view\MenuFuncionario2$19.class
 view\MenuAdm$8.class
+view\MenuGestor$23.class
 view\Login$6.class
 view\MenuFuncionario2$24.class
 view\MenuFuncionario2$6.class
@@ -93,13 +95,13 @@ DAO\EmprestimosDAO.class
 controller\RegistroAtividade.class
 view\MenuFuncionario2$34.class
 view\MenuAdm$12.class
-view\MenuAdm$32.class
 view\MenuGestor$21.class
 view\MenuFuncionario2$11.class
 view\MenuFuncionario2$1.class
 view\MenuAdm$30.class
 view\AlterarSenha.class
 view\AlterarSenha$3.class
+view\MenuFuncionario2$38.class
 view\MenuFuncionario2$8.class
 view\MenuAdm$20.class
 view\MenuFuncionario2$28.class
@@ -119,10 +121,10 @@ view\MenuFuncionario2$27.class
 view\MenuFuncionario2$32.class
 view\Login$3.class
 view\MenuAdm$26.class
-view\MenuAdm$31.class
 view\MenuGestor$2.class
 view\MenuAdm$14.class
 view\Login.class
+view\MenuFuncionario2$39.class
 view\MenuGestor$14.class
 view\MenuFuncionario2$16.class
 view\MenuFuncionario2$21.class

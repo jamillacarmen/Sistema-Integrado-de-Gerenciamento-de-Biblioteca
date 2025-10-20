@@ -116,7 +116,6 @@ public class MenuAdm extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabelaAtividades = new javax.swing.JTable();
         btnLimparFiltro = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -302,54 +301,15 @@ public class MenuAdm extends javax.swing.JFrame {
 
         UtilizadorTable.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         UtilizadorTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+            new Object [][] {},
             new String [] {
-                "ID", "Nome", "Contacto", "Cargo"
-            }
+                "ID", "Nome", "Contacto", "Cargo"}
         ) {
             public boolean isCellEditable(int row, int column) {
                 return false; // Torna a tabela não editável
             }
         }
     );
-    UtilizadorTable.setGridColor(new java.awt.Color(255, 255, 255));
-    UtilizadorTable.setSelectionBackground(new java.awt.Color(255, 255, 255));
     UtilizadorTable.addMouseListener(new java.awt.event.MouseAdapter() {
         public void mouseClicked(java.awt.event.MouseEvent evt) {
             UtilizadorTableMouseClicked(evt);
@@ -661,47 +621,28 @@ public class MenuAdm extends javax.swing.JFrame {
         }
     });
 
-    jButton3.setBackground(new java.awt.Color(201, 169, 154));
-    jButton3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-    jButton3.setText("Detalhes");
-    jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-        public void mouseEntered(java.awt.event.MouseEvent evt) {
-            jButton3MouseEntered(evt);
-        }
-    });
-    jButton3.addActionListener(new java.awt.event.ActionListener() {
-        public void actionPerformed(java.awt.event.ActionEvent evt) {
-            jButton3ActionPerformed(evt);
-        }
-    });
-
     javax.swing.GroupLayout AtividadeGestPanelLayout = new javax.swing.GroupLayout(AtividadeGestPanel);
     AtividadeGestPanel.setLayout(AtividadeGestPanelLayout);
     AtividadeGestPanelLayout.setHorizontalGroup(
         AtividadeGestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AtividadeGestPanelLayout.createSequentialGroup()
-            .addGap(99, 99, 99)
+            .addGap(57, 57, 57)
             .addComponent(jButton6)
-            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 425, Short.MAX_VALUE)
+            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton5)
             .addGap(45, 45, 45))
         .addGroup(AtividadeGestPanelLayout.createSequentialGroup()
             .addGap(30, 30, 30)
-            .addGroup(AtividadeGestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                .addGroup(AtividadeGestPanelLayout.createSequentialGroup()
-                    .addComponent(jButton3)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnLimparFiltro))
+            .addGroup(AtividadeGestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addComponent(btnLimparFiltro)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addContainerGap(32, Short.MAX_VALUE))
     );
     AtividadeGestPanelLayout.setVerticalGroup(
         AtividadeGestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
         .addGroup(AtividadeGestPanelLayout.createSequentialGroup()
             .addGap(12, 12, 12)
-            .addGroup(AtividadeGestPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnLimparFiltro)
-                .addComponent(jButton3))
+            .addComponent(btnLimparFiltro)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
             .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1266,15 +1207,13 @@ private void adicionarCampoUtilizador(JPanel panel, String label, String valor) 
         JOptionPane.INFORMATION_MESSAGE);
 
     }//GEN-LAST:event_btnLimparFiltroActionPerformed
-            // BOTAO VER DETALHES
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+                            //METODO PRA VER DETALHES
+    private void tabelaAtividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaAtividadesMouseClicked
         // TODO add your handling code here:
-        
-    int selectedRow = tabelaAtividades.getSelectedRow();
+        if (evt.getClickCount() == 2) { // Clique duplo
+        int selectedRow = tabelaAtividades.getSelectedRow();
     if (selectedRow == -1) {
-        JOptionPane.showMessageDialog(this, 
-            "Selecione uma atividade para ver os detalhes!",
-            "Seleção Necessária", JOptionPane.WARNING_MESSAGE);
+        
         return;
     }
     
@@ -1288,15 +1227,8 @@ private void adicionarCampoUtilizador(JPanel panel, String label, String valor) 
         JOptionPane.showMessageDialog(this, 
             "Detalhes não encontrados para esta atividade.",
             "Erro", JOptionPane.ERROR_MESSAGE);
-    }
-
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void tabelaAtividadesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelaAtividadesMouseClicked
-        // TODO add your handling code here:
-        if (evt.getClickCount() == 2) { // Clique duplo
-        jButton3ActionPerformed(null);
-    }
+    } 
+   }
     }//GEN-LAST:event_tabelaAtividadesMouseClicked
 
     private void SairLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SairLabelMouseClicked
@@ -1319,11 +1251,6 @@ private void adicionarCampoUtilizador(JPanel panel, String label, String valor) 
         // TODO add your handling code here:
          SairLabel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
     }//GEN-LAST:event_SairLabelMouseEntered
-
-    private void jButton3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseEntered
-        // TODO add your handling code here:
-         jButton3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-    }//GEN-LAST:event_jButton3MouseEntered
 
     private void btnLimparFiltroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLimparFiltroMouseEntered
         // TODO add your handling code here:
@@ -1645,7 +1572,6 @@ private void pesquisarAtividades(String termo) {
     private javax.swing.JButton btnLimparFiltro;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JComboBox<String> jComboBox1;

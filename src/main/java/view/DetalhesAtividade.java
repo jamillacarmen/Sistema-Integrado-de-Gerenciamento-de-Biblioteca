@@ -122,18 +122,23 @@ public class DetalhesAtividade extends javax.swing.JFrame {
     private void imprimirRelatorio() {
         try {
             // Criar conteudo do relatorio
-            String relatorio = gerarConteudoRelatorio();
+        
+             JTextArea textoRelatorio = new JTextArea();
+            textoRelatorio.setEditable(false);
+            textoRelatorio.setFont(new Font("Monospaced", Font.PLAIN, 12));
+            textoRelatorio.setText(gerarConteudoRelatorio());
             
             // Mostrar preview antes de imprimir
             int option = JOptionPane.showConfirmDialog(this, 
-                "Deseja imprimir o relatório desta atividade?\n\n" + relatorio,
+                "Deseja imprimir o relatório desta atividade?\n\n" ,
                 "Confirmar Impressão", 
                 JOptionPane.YES_NO_OPTION);
             
             if (option == JOptionPane.YES_OPTION) {
-                // Simular impressao )
+                 // Executar impressão real
+                textoRelatorio.print();
                 JOptionPane.showMessageDialog(this, 
-                    "Relatório enviado para impressão!\n\n" + relatorio,
+                    "Relatório enviado para impressão!\n\n",
                     "Impressão Concluída", 
                     JOptionPane.INFORMATION_MESSAGE);
             }
@@ -154,7 +159,7 @@ public class DetalhesAtividade extends javax.swing.JFrame {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         String dataImpressao = sdf.format(new Date());
         
-        return "=== RELATÓRIO DE ATIVIDADE ===\n" +
+        return "===== RELATÓRIO DE ATIVIDADE =====\n" +
                "Data de impressão: " + dataImpressao + "\n" +
                "----------------------------------------\n" +
                "Data/Hora: " + atividade.getDataHora() + "\n" +
